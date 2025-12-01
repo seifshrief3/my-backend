@@ -15,8 +15,7 @@ const CHAT_ID = '-1003383269388';
 // **********************************************
 
 const app = express();
-const PORT = 3001;
-
+const port = process.env.PORT || 3001;
 // دالة لعمل Escape لرموز HTML (لمنع أخطاء التنسيق)
 const escapeHTML = (text) => {
   if (text === null || text === undefined) return 'N/A';
@@ -236,7 +235,7 @@ app.post('/api/send-lead', upload.fields([
   });
 });
 
-// تشغيل السيرفر
-app.listen(PORT, () => {
-  console.log(`Backend server running on http://localhost:${PORT}`);
-});
+app.listen(port, () => {
+  // استخدم 'port' بدل 'PORT' عشان ده اسم المتغير الجديد
+  console.log(`Backend server running on port ${port}`);
+})
